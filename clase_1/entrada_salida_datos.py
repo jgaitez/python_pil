@@ -2,9 +2,6 @@
 # Función PRINT
 # Parametros extras: sep, end
 
-import imp
-
-
 print(".-:Hola Mundo:-.\n")
 print("Desde Visual")
 print("Y con extensiones\nque te facilitan codear\n")
