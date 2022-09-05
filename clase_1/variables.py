@@ -35,8 +35,8 @@ print("El resultado de multiplicar los dos valores ingresados es: ",resultado2)
 print("El tipo de dato del resultado es: ",type(resultado2))
 
 x = str(x) #Esto significa que a partir de ahora, "x" va a ser el contenido de
-#           la "x" anterior pero en formato string (originamente en #27 fue 
-#           int)
+# la "x" anterior pero en formato string (originamente en #27 fue 
+# int)
 
 resultado3 = x * y
 # Con la redefinicion de "x" en #36 al querer repetir la multiplicación de #29 
