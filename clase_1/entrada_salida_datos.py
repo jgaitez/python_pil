@@ -47,3 +47,9 @@ print("Le entiendo o no?")
 # Entrada de datos
 # Funcion INPUT
 input("Mensaje para avisar al usuario que el sistema esta a la espera de\nun ingreso de info: ")
+# El mensaje tambien se puede escribir con la función print
+# (sin "end" haría el salto de linea y el input se escribiría abajo y con el 
+# "end" se podria escribir al lado de haber terminado el mensaje que se 
+# imprimió). La otra opcion es como en la linea 49, escribir el msj dentro
+# del input y finalizarlo con un espacio para que quede prolijo cuando se
+# imprima.

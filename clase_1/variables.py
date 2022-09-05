@@ -16,7 +16,8 @@ x = input("Ingrese un número: ")
 y = input("Ingrese otro número: ")
 
 # Por mas que yo en x e y ingrese números, Python no los va a tratar como tales
-# pues #8. Si yo los printeo unidos con un "+" los va a concatenar. 
+# pues #8. Si yo los printeo unidos con un "+" los va a concatenar. Si yo necesito
+# mostrar diversos tipos de datos, los tengo que unir con "," y no con "+" 
 
 resultado = x + y
 print("El resultado es -->: ", resultado)
