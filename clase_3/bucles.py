@@ -5,8 +5,6 @@
 # se cumpla una condicion
 
 # Ejemplo 1
-from pickle import FALSE
-
 
 for i in "Python":
     # "Repetir (iterar) i en una cadena de texto"
