@@ -26,3 +26,4 @@ print(
 ,...,,,,,,,,,,,..,,,.,,,,,,,,,,,,,,,,,,,,,,*%@@@&@@@@/@#%&&@@@@@@@@@@@@@@@@@@&&@@&#&&&&&*,,,,,,,,,,,
 """)
 # No es lo que esperaba, pero estoy satisfecho. Tuve problemas con las lib "Pillow" e "image_to_ascii"
+# Edit: Al final asi había que hacerlo xD

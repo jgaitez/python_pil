@@ -1,4 +1,3 @@
-"""
 # Bucles
 # Permiten hacer que una porción de codigo se repita
 # Los principales son: "for" y "while"
@@ -116,9 +115,7 @@ print(lista)
 
 print("------Fin del Ejemplo 6 ter------")
 
-"""
 # Todo lo que este entre """ se va a "comentar" y no ejecutar
-
 
 # While ejecuta el codigo sin restriccion de veces y hasta que yo lo
 # detenga o se cumpla una condicion
@@ -134,6 +131,8 @@ while x > 0:
 # reduzca el valor de x. Para terminar manualmente la ejecución del codigo
 # hay que presionar ctrl + c.
     x = x - 1
+# Alternativa rapida: 
+# x -= 1
 # Redefino la variable para que su valor nuevo, sea el anterior menos 1.
 
 
