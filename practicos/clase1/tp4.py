@@ -1,3 +1,5 @@
+# Crear un diccionario del ejercicio anterior.
+
 input_usuario = input("Por favor, ingrese una palabra:")
 ejercicio_3 = {
     "palabra": input_usuario,
