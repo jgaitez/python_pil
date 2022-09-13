@@ -35,16 +35,34 @@ while opcion == "x" :
             print("No ha ingresado un número válido")
             print("Ahora volverá al menú principal")
     elif opcion == "e" :
-        print("Bienvenido a la sección de extracciones")
+        print("=================================================================")
+        print("+++++++++++++++++++++++++++  EXTRACCIONES  ++++++++++++++++++++++")
+        print("=================================================================")
         monto_extra = input("Ingrese el monto a extraer: $")
-        print("Su extracción de $"+monto_extra+" ha sido confirmada.")
-        print("Ahora volverá al menú principal")
+        if monto_extra.isnumeric() :
+            print("=================================================================")
+            print("+++++++++++++++++++++++++++  EXTRACCIONES  ++++++++++++++++++++++")
+            print("=================================================================")
+            print("Su extracción de $"+monto_extra+" ha sido confirmada.")
+            print("Ahora volverá al menú principal")
+        else:
+            print("No ha ingresado un número válido")
+            print("Ahora volverá al menú principal")    
     elif opcion == "t" :
-        print("Bienvenido a la sección de transferencias")
+        print("=================================================================")
+        print("++++++++++++++++++++++++++  TRANSFERENCIAS  +++++++++++++++++++++")
+        print("=================================================================")
         monto_transfe = input("Ingrese el monto a transferir: $")
-        cbu_transfe = input("Ingrese el CBU al cual desea transferir:")
-        print("Su transferencia de $"+monto_extra+" al CBU "+cbu_transfe+" ha sido confirmada.")
-        print("Ahora volverá al menú principal")
+        cbu_transfe = input("Ingrese el CBU al cual desea transferir: ")
+        if cbu_transfe.isnumeric() and monto_transfe.isnumeric():
+            print("=================================================================")
+            print("++++++++++++++++++++++++++  TRANSFERENCIAS  +++++++++++++++++++++")
+            print("=================================================================")
+            print("Su transferencia de $"+monto_transfe+" al CBU "+cbu_transfe+" ha sido confirmada.")
+            print("Ahora volverá al menú principal")
+        else:
+            print("Algunos de los datos ingresados es inválido")
+            print("Ahora volverá al menú principal") 
     elif opcion == "s" :
         print("=================================================================")
         print("++++++++++++++ Gracias por usar nuestros servicios ++++++++++++++")
