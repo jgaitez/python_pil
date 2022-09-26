@@ -2,6 +2,7 @@ import os
 import random
 import time
 
+
 def limpiar():
     """Borra el contenido de consola
     """
@@ -11,14 +12,16 @@ def limpiar():
 def espera(segundos):
     time.sleep(segundos)
 
+
 def nombre_juego_entero():
-    print(""" 
-  ______    __                   __                   __            ______    _              __     __               
+    print("""
+  ______    __                   __                   __            ______    _              __     __
  /_  __/   / /_   ___           / /_   ___    _____  / /_          / ____/   (_)   ____ _   / /_   / /_  ___    _____
   / /     / __ \ / _ \         / __ \ / _ \  / ___/ / __/         / /_      / /   / __ `/  / __ \ / __/ / _ \  / ___/
- / /     / / / //  __/        / /_/ //  __/ (__  ) / /_          / __/     / /   / /_/ /  / / / // /_  /  __/ / /    
-/_/     /_/ /_/ \___/        /_.___/ \___/ /____/  \__/         /_/       /_/    \__, /  /_/ /_/ \__/  \___/ /_/     
+ / /     / / / //  __/        / /_/ //  __/ (__  ) / /_          / __/     / /   / /_/ /  / / / // /_  /  __/ / /
+/_/     /_/ /_/ \___/        /_.___/ \___/ /____/  \__/         /_/       /_/    \__, /  /_/ /_/ \__/  \___/ /_/
                                                                                 /____/""")
+
 
 def bienvenida():
     print("                           _     ___      _                                        _        __           __")
@@ -57,13 +60,14 @@ def bienvenida():
     espera(0.1)
     print("                                   ᴍᴇɪɴᴇ ᴀᴜꜰʀɪᴄʜᴛɪɢᴇ ᴇɴᴛsᴄʜᴜʟᴅɪɢᴜɴɢ, ʜᴇʀʀ ɢᴜɪᴅᴏ ᴠᴀɴ ʀᴏssᴜᴍ\n\n\n")
 
+
 def prox_ronda():
     texto = "Próxima ronda!"
     inicio = 0
     fin = 0
 
     for i in texto:
-        letra = texto[inicio : fin]
+        letra = texto[inicio:fin]
         print(letra)
         time.sleep(0.15)
         fin += 1
@@ -72,8 +76,8 @@ def prox_ronda():
     espera(0.5)
     limpiar()
 
-class Personajes:
 
+class Personajes:
     def __init__(self):
         self.hp_max = random.randrange(60, 71)
         self.mp_max = random.randrange(30, 41)
@@ -84,7 +88,7 @@ class Personajes:
         self.habilidades = [BolaDeFuego(), GolpeLetal(), Golpear()]
 
     def __str__(self):
-        return "Jugador: " + str(self.nombre)+ " HP: " + str(self.hp) + "/" + str(self.hp_max) + "  MP: " + str(self.mp)+ "/" + str(self.mp_max)
+        return "Jugador: " + str(self.nombre) + " HP: " + str(self.hp) + "/" + str(self.hp_max) + "  MP: " + str(self.mp) + "/" + str(self.mp_max)
 
     def stats(self):
         print("HP:", self.hp, "/", self.hp_max)
@@ -101,11 +105,11 @@ class Personajes:
             x = input("➟  ")
             return int(x)
 
-class Jugador(Personajes):
 
+class Jugador(Personajes):
     def __init__(self, nombre):
             self.nombre = nombre
-            super().__init__()   
+            super().__init__()
 
 
 class Ia(Personajes):
@@ -120,7 +124,6 @@ class Ia(Personajes):
 
 
 class BolaDeFuego():
-
     def __init__(self):
         self.daño = 0
         self.nombre = "Bola de fuego"
@@ -157,8 +160,8 @@ class Golpear():
         self.daño = origen.inteligencia+origen.fuerza
         return self.daño
 
-def juego():
 
+def juego():
     bienvenida()
     nombre_humano = input("Cuál es tu nombre?\n➟  ")
     humano = Jugador(nombre_humano.capitalize())
@@ -193,20 +196,20 @@ def juego():
         print("Daño que causaste:", humano.habilidades[elec1].devolverAtaque(humano))
         if humano.hp <= 0 and maquina.hp <= 0:
             break
-        
-        print("\nTurno de",maquina.nombre)
-        elec2 = random.randint(0,2)
-        humano.hp -=  maquina.habilidades[elec2].devolverAtaque(maquina) 
-        print(maquina.nombre,"ha usado",maquina.habilidades[elec2].nombre)
+
+        print("\nTurno de", maquina.nombre)
+        elec2 = random.randint(0, 2)
+        humano.hp -= maquina.habilidades[elec2].devolverAtaque(maquina)
+        print(maquina.nombre, "ha usado", maquina.habilidades[elec2].nombre)
         espera(1)
         print("Atacando...")
         espera(1)
-        print("Daño que te causaron:",maquina.habilidades[elec2].devolverAtaque(maquina))
+        print("Daño que te causaron:", maquina.habilidades[elec2].devolverAtaque(maquina))
         espera(1)
         prox_ronda()
-        if humano.hp<=0 or maquina.hp<=0:
+        if humano.hp <= 0 or maquina.hp <= 0:
             break
-    if humano.hp>0:
+    if humano.hp > 0:
             print(f"No hizo falta una {ronda+1}° ronda! Ya ganaste {humano.nombre}!")
             print("--------------------")
             print("Gracias por jugarme!")
