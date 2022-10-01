@@ -60,17 +60,18 @@ ALTER TABLE paises
 ALTER TABLE provincias
     ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
 ALTER TABLE ciudades
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia);
+    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia),
+    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
 ALTER TABLE domicilios
     ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia), 
-    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad);
+    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad),
     ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
 
 ALTER TABLE clientes
     ADD FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio), 
     ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad), 
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia);
-
+    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia),
+    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
 
 -- 4) Inserto registros
 -- Paises
@@ -89,12 +90,12 @@ INSERT INTO provincias VALUES (null,'Buenos Aires',1);
 INSERT INTO provincias VALUES (null,'Montevideo',3);
 
 -- Ciudades
-INSERT INTO ciudades (id_ciudad, nombre, id_provincia)
-VALUES (null,'Colonia Caroya',1);
-INSERT INTO ciudades VALUES (null,'Merlo',2);
-INSERT INTO ciudades VALUES (null,'Santa Rosa',3);
-INSERT INTO ciudades VALUES (null,'La Plata',4);
-INSERT INTO ciudades VALUES (null,'La Calera',1);
+INSERT INTO ciudades (id_ciudad, nombre, id_provincia,id_pais)
+VALUES (null,'Colonia Caroya',1,1);
+INSERT INTO ciudades VALUES (null,'Merlo',2,1);
+INSERT INTO ciudades VALUES (null,'Santa Rosa',3,1);
+INSERT INTO ciudades VALUES (null,'La Plata',4,1);
+INSERT INTO ciudades VALUES (null,'La Calera',1,1);
 
 -- Domicilios
 INSERT INTO domicilios (id_domicilio, calle, altura, barrio, id_ciudad, id_provincia, id_pais) 
@@ -160,7 +161,7 @@ SELECT id_cliente, nombre, apellido FROM clientes;
 -- 8) Sentencia SELECT con condicion WHERE
 SELECT nombre FROM ciudades WHERE id_provincia=1;
 
---9) Sentencia SELECT con FROM de 2 tablas
+-- 9) Sentencia SELECT con FROM de 2 tablas
 -- SELECT: Elijo los campos a trabajar
 SELECT clientes.id_cliente, clientes.nombre, clientes.apellido, domicilios.calle, domicilios.altura, domicilios.barrio
 -- FROM: Elijo una tabla
@@ -170,5 +171,5 @@ ON clientes.id_domicilio=domicilios.id_domicilio; -- Determino el criterio con e
 -- Es decir: Mostrar solo los campos determinados en SELECT cuando el id_domicilio de la tabla clientes sea igual al
 -- id_domicilio de la tabla domicilios
 
---10) Sentencia SELECT con solo descripciones
+-- 10) Sentencia SELECT con solo descripciones
 SELECT nombre FROM paises 
