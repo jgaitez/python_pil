@@ -10,7 +10,7 @@ CREATE TABLE clientes (
     apellido varchar(50),
     id_domicilio int(8),
     id_ciudad int(8),
-    id_provincia int(2)
+    id_provincia int(2),
     id_pais int(3));
     
 CREATE TABLE domicilios (
@@ -19,13 +19,13 @@ CREATE TABLE domicilios (
     altura int(5),
     barrio varchar(100),
     id_ciudad int(8),
-    id_provincia int(2)
+    id_provincia int(2),
     id_pais int(3));
     
 CREATE TABLE ciudades (
     id_ciudad int(8),
     nombre varchar(100),
-    id_provincia int(2)
+    id_provincia int(2),
     id_pais int(3));
    
 CREATE TABLE provincias (
