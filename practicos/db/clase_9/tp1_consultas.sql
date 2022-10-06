@@ -8,25 +8,21 @@ CREATE TABLE clientes (
     id_cliente int(8),
     nombre varchar(50),
     apellido varchar(50),
-    id_domicilio int(8),
-    id_ciudad int(8),
-    id_provincia int(2),
-    id_pais int(3));
+    id_domicilio int(8));
+
     
 CREATE TABLE domicilios (
     id_domicilio int(8),
     calle varchar(100),
     altura int(5),
     barrio varchar(100),
-    id_ciudad int(8),
-    id_provincia int(2),
-    id_pais int(3));
+    id_ciudad int(8));
+
     
 CREATE TABLE ciudades (
     id_ciudad int(8),
     nombre varchar(100),
-    id_provincia int(2),
-    id_pais int(3));
+    id_provincia int(2));
    
 CREATE TABLE provincias (
     id_provincia int(2),
@@ -60,18 +56,11 @@ ALTER TABLE paises
 ALTER TABLE provincias
     ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
 ALTER TABLE ciudades
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia),
-    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
+    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia);
 ALTER TABLE domicilios
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia), 
-    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad),
-    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
-
+    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad);
 ALTER TABLE clientes
-    ADD FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio), 
-    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad), 
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia),
-    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
+    ADD FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio);
 
 -- 4) Inserto registros
 -- Paises
@@ -90,28 +79,28 @@ INSERT INTO provincias VALUES (null,'Buenos Aires',1);
 INSERT INTO provincias VALUES (null,'Montevideo',3);
 
 -- Ciudades
-INSERT INTO ciudades (id_ciudad, nombre, id_provincia,id_pais)
-VALUES (null,'Colonia Caroya',1,1);
-INSERT INTO ciudades VALUES (null,'Merlo',2,1);
-INSERT INTO ciudades VALUES (null,'Santa Rosa',3,1);
-INSERT INTO ciudades VALUES (null,'La Plata',4,1);
-INSERT INTO ciudades VALUES (null,'La Calera',1,1);
+INSERT INTO ciudades (id_ciudad, nombre, id_provincia)
+VALUES (null,'Colonia Caroya',1);
+INSERT INTO ciudades VALUES (null,'Merlo',2);
+INSERT INTO ciudades VALUES (null,'Santa Rosa',3);
+INSERT INTO ciudades VALUES (null,'La Plata',4);
+INSERT INTO ciudades VALUES (null,'La Calera',1);
 
 -- Domicilios
-INSERT INTO domicilios (id_domicilio, calle, altura, barrio, id_ciudad, id_provincia, id_pais) 
-VALUES (null, 'Avenida Siempre Viva', 742, 'Lomas de Springield', 1, 1, 1);
-INSERT INTO domicilios VALUES (null, 'Baker Street', 221, 'Westminster', 4, 4, 1);
-INSERT INTO domicilios VALUES (null, 'Privet Drive', 4, 'Little Whinging', 5, 1, 1);
-INSERT INTO domicilios VALUES (null, 'Grimmauld Place', 12, 'Islington', 3, 3, 1);
-INSERT INTO domicilios VALUES (null, 'Spooner', 31, 'Quahog', 2, 2, 1);
+INSERT INTO domicilios (id_domicilio, calle, altura, barrio, id_ciudad) 
+VALUES (null, 'Avenida Siempre Viva', 742, 'Lomas de Springield', 1);
+INSERT INTO domicilios VALUES (null, 'Baker Street', 221, 'Westminster', 4);
+INSERT INTO domicilios VALUES (null, 'Privet Drive', 4, 'Little Whinging', 5);
+INSERT INTO domicilios VALUES (null, 'Grimmauld Place', 12, 'Islington', 3);
+INSERT INTO domicilios VALUES (null, 'Spooner', 31, 'Quahog', 2);
 
 -- Clientes
-INSERT INTO clientes (id_cliente, nombre, apellido, id_domicilio, id_ciudad, id_provincia, id_pais) 
-VALUES (null,'Homero','Simpson',1, 1, 1, 1);
-INSERT INTO clientes VALUES (null,'Sherlock','Holmes', 2, 4, 4, 1);
-INSERT INTO clientes VALUES (null,'Vernon','Dursley', 3, 5, 1, 1);
-INSERT INTO clientes VALUES (null,'Sirius','Black', 4, 3, 3, 1);
-INSERT INTO clientes VALUES (null,'Stewart','Griffin', 5, 2, 2, 1);
+INSERT INTO clientes (id_cliente, nombre, apellido, id_domicilio) 
+VALUES (null,'Homero','Simpson',1);
+INSERT INTO clientes VALUES (null,'Sherlock','Holmes', 2);
+INSERT INTO clientes VALUES (null,'Vernon','Dursley', 3);
+INSERT INTO clientes VALUES (null,'Sirius','Black', 4);
+INSERT INTO clientes VALUES (null,'Stewart','Griffin', 5);
 
 -- 5) Modifico Registros
 -- Paises
@@ -132,7 +121,7 @@ UPDATE ciudades SET nombre = 'Ciudad de La Calera' WHERE id_ciudad = 5;
 -- Domicilios
 UPDATE domicilios SET calle = 'Evergreen Terrace' WHERE id_domicilio = 1;
 UPDATE domicilios SET calle = 'Baker' WHERE id_domicilio = 2;
-UPDATE domicilios SET id_ciudad = 2, id_provincia = 2 WHERE id_domicilio = 4;
+UPDATE domicilios SET id_ciudad = 2 WHERE id_domicilio = 4;
 
 -- Clientes
 UPDATE clientes SET nombre = 'Lisa' WHERE id_cliente = 1;
