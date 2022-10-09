@@ -4,14 +4,14 @@ USE test; -- Elijo BD para trabajar
 
 -- 2) creo las tablas de la BD
 
-CREATE TABLE clientes (
+CREATE TABLE CLIENTES (
     id_cliente int(8),
     nombre varchar(50),
     apellido varchar(50),
     id_domicilio int(8));
 
     
-CREATE TABLE domicilios (
+CREATE TABLE DOMICILIOS (
     id_domicilio int(8),
     calle varchar(100),
     altura int(5),
@@ -19,146 +19,146 @@ CREATE TABLE domicilios (
     id_ciudad int(8));
 
     
-CREATE TABLE ciudades (
+CREATE TABLE CIUDADES (
     id_ciudad int(8),
     nombre varchar(100),
     id_provincia int(2));
    
-CREATE TABLE provincias (
+CREATE TABLE PROVINCIAS (
     id_provincia int(2),
     nombre varchar(100),
     id_pais int(3));
     
-CREATE TABLE paises (
+CREATE TABLE PAISES (
     id_pais int(3),
     nombre varchar(100));
 
 -- 3) Defino AI y PK 
 
-ALTER TABLE clientes
+ALTER TABLE CLIENTES
     CHANGE `id_cliente` `id_cliente` INT(8) NOT NULL AUTO_INCREMENT, 
     ADD PRIMARY KEY(id_cliente);
-ALTER TABLE domicilios
+ALTER TABLE DOMICILIOS
     CHANGE `id_domicilio` `id_domicilio` INT(8) NOT NULL AUTO_INCREMENT, 
     ADD PRIMARY KEY(id_domicilio);
-ALTER TABLE ciudades
+ALTER TABLE CIUDADES
     CHANGE `id_ciudad` `id_ciudad` INT(8) NOT NULL AUTO_INCREMENT,
     ADD PRIMARY KEY(id_ciudad);
-ALTER TABLE provincias
+ALTER TABLE PROVINCIAS
     CHANGE `id_provincia` `id_provincia` INT(2) NOT NULL AUTO_INCREMENT,
     ADD PRIMARY KEY(id_provincia);
-ALTER TABLE paises
+ALTER TABLE PAISES
     CHANGE `id_pais` `id_pais` INT(3) NOT NULL AUTO_INCREMENT, 
     ADD PRIMARY KEY (id_pais);
 
 -- Defino FK
 
-ALTER TABLE provincias
-    ADD FOREIGN KEY (id_pais) REFERENCES paises(id_pais);
-ALTER TABLE ciudades
-    ADD FOREIGN KEY (id_provincia) REFERENCES provincias(id_provincia);
-ALTER TABLE domicilios
-    ADD FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad);
-ALTER TABLE clientes
-    ADD FOREIGN KEY (id_domicilio) REFERENCES domicilios(id_domicilio);
+ALTER TABLE PROVINCIAS
+    ADD FOREIGN KEY (id_pais) REFERENCES PAISES(id_pais);
+ALTER TABLE CIUDADES
+    ADD FOREIGN KEY (id_provincia) REFERENCES PROVINCIAS(id_provincia);
+ALTER TABLE DOMICILIOS
+    ADD FOREIGN KEY (id_ciudad) REFERENCES CIUDADES(id_ciudad);
+ALTER TABLE CLIENTES
+    ADD FOREIGN KEY (id_domicilio) REFERENCES DOMICILIOS(id_domicilio);
 
 -- 4) Inserto registros
--- Paises
-INSERT INTO paises (id_pais, nombre) VALUES (null,'Argentina');
-INSERT INTO paises VALUES (null,'Brasil');
-INSERT INTO paises VALUES (null,'Uruguay');
-INSERT INTO paises VALUES (null,'Chile');
-INSERT INTO paises VALUES (null,'Colombia');
+-- PAISES
+INSERT INTO PAISES (id_pais, nombre) VALUES (null,'Argentina');
+INSERT INTO PAISES VALUES (null,'Brasil');
+INSERT INTO PAISES VALUES (null,'Uruguay');
+INSERT INTO PAISES VALUES (null,'Chile');
+INSERT INTO PAISES VALUES (null,'Colombia');
 
--- Provincias
-INSERT INTO provincias (id_provincia, nombre, id_pais)
+-- PROVINCIAS
+INSERT INTO PROVINCIAS (id_provincia, nombre, id_pais)
 VALUES (null,'Córdoba',1);
-INSERT INTO provincias VALUES (null,'San Luis',1);
-INSERT INTO provincias VALUES (null,'La Pampa',1);
-INSERT INTO provincias VALUES (null,'Buenos Aires',1);
-INSERT INTO provincias VALUES (null,'Montevideo',3);
+INSERT INTO PROVINCIAS VALUES (null,'San Luis',1);
+INSERT INTO PROVINCIAS VALUES (null,'La Pampa',1);
+INSERT INTO PROVINCIAS VALUES (null,'Buenos Aires',1);
+INSERT INTO PROVINCIAS VALUES (null,'Montevideo',3);
 
--- Ciudades
-INSERT INTO ciudades (id_ciudad, nombre, id_provincia)
+-- CIUDADES
+INSERT INTO CIUDADES (id_ciudad, nombre, id_provincia)
 VALUES (null,'Colonia Caroya',1);
-INSERT INTO ciudades VALUES (null,'Merlo',2);
-INSERT INTO ciudades VALUES (null,'Santa Rosa',3);
-INSERT INTO ciudades VALUES (null,'La Plata',4);
-INSERT INTO ciudades VALUES (null,'La Calera',1);
+INSERT INTO CIUDADES VALUES (null,'Merlo',2);
+INSERT INTO CIUDADES VALUES (null,'Santa Rosa',3);
+INSERT INTO CIUDADES VALUES (null,'La Plata',4);
+INSERT INTO CIUDADES VALUES (null,'La Calera',1);
 
 -- Domicilios
-INSERT INTO domicilios (id_domicilio, calle, altura, barrio, id_ciudad) 
+INSERT INTO DOMICILIOS (id_domicilio, calle, altura, barrio, id_ciudad) 
 VALUES (null, 'Avenida Siempre Viva', 742, 'Lomas de Springield', 1);
-INSERT INTO domicilios VALUES (null, 'Baker Street', 221, 'Westminster', 4);
-INSERT INTO domicilios VALUES (null, 'Privet Drive', 4, 'Little Whinging', 5);
-INSERT INTO domicilios VALUES (null, 'Grimmauld Place', 12, 'Islington', 3);
-INSERT INTO domicilios VALUES (null, 'Spooner', 31, 'Quahog', 2);
+INSERT INTO DOMICILIOS VALUES (null, 'Baker Street', 221, 'Westminster', 4);
+INSERT INTO DOMICILIOS VALUES (null, 'Privet Drive', 4, 'Little Whinging', 5);
+INSERT INTO DOMICILIOS VALUES (null, 'Grimmauld Place', 12, 'Islington', 3);
+INSERT INTO DOMICILIOS VALUES (null, 'Spooner', 31, 'Quahog', 2);
 
 -- Clientes
-INSERT INTO clientes (id_cliente, nombre, apellido, id_domicilio) 
+INSERT INTO CLIENTES (id_cliente, nombre, apellido, id_domicilio) 
 VALUES (null,'Homero','Simpson',1);
-INSERT INTO clientes VALUES (null,'Sherlock','Holmes', 2);
-INSERT INTO clientes VALUES (null,'Vernon','Dursley', 3);
-INSERT INTO clientes VALUES (null,'Sirius','Black', 4);
-INSERT INTO clientes VALUES (null,'Stewart','Griffin', 5);
+INSERT INTO CLIENTES VALUES (null,'Sherlock','Holmes', 2);
+INSERT INTO CLIENTES VALUES (null,'Vernon','Dursley', 3);
+INSERT INTO CLIENTES VALUES (null,'Sirius','Black', 4);
+INSERT INTO CLIENTES VALUES (null,'Stewart','Griffin', 5);
 
 -- 5) Modifico Registros
--- Paises
-UPDATE paises SET nombre = 'República Argentina' WHERE id_pais = 1;
-UPDATE paises SET nombre = 'República Federativa de Brasil' WHERE id_pais = 2;
-UPDATE paises SET nombre = 'República Oriental del Uruguay' WHERE id_pais = 3;
+-- PAISES
+UPDATE PAISES SET nombre = 'República Argentina' WHERE id_pais = 1;
+UPDATE PAISES SET nombre = 'República Federativa de Brasil' WHERE id_pais = 2;
+UPDATE PAISES SET nombre = 'República Oriental del Uruguay' WHERE id_pais = 3;
 
--- Provincias
-UPDATE provincias SET nombre = 'Provincia de San Luis' WHERE id_provincia = 3;
-UPDATE provincias SET nombre = 'Provincia de Buenos Aires' WHERE id_provincia = 4;
-UPDATE provincias SET nombre = 'Departamento de Montevideo' WHERE id_provincia = 5;
+-- PROVINCIAS
+UPDATE PROVINCIAS SET nombre = 'Provincia de San Luis' WHERE id_provincia = 3;
+UPDATE PROVINCIAS SET nombre = 'Provincia de Buenos Aires' WHERE id_provincia = 4;
+UPDATE PROVINCIAS SET nombre = 'Departamento de Montevideo' WHERE id_provincia = 5;
 
--- Ciudades
-UPDATE ciudades SET nombre = 'Ciudad de Colonia Caroya' WHERE id_ciudad = 1;
-UPDATE ciudades SET nombre = 'Ciudad de Santa Rosa' WHERE id_ciudad = 3;
-UPDATE ciudades SET nombre = 'Ciudad de La Calera' WHERE id_ciudad = 5;
+-- CIUDADES
+UPDATE CIUDADES SET nombre = 'Ciudad de Colonia Caroya' WHERE id_ciudad = 1;
+UPDATE CIUDADES SET nombre = 'Ciudad de Santa Rosa' WHERE id_ciudad = 3;
+UPDATE CIUDADES SET nombre = 'Ciudad de La Calera' WHERE id_ciudad = 5;
 
 -- Domicilios
-UPDATE domicilios SET calle = 'Evergreen Terrace' WHERE id_domicilio = 1;
-UPDATE domicilios SET calle = 'Baker' WHERE id_domicilio = 2;
-UPDATE domicilios SET id_ciudad = 2 WHERE id_domicilio = 4;
+UPDATE DOMICILIOS SET calle = 'Evergreen Terrace' WHERE id_domicilio = 1;
+UPDATE DOMICILIOS SET calle = 'Baker' WHERE id_domicilio = 2;
+UPDATE DOMICILIOS SET id_ciudad = 2 WHERE id_domicilio = 4;
 
 -- Clientes
-UPDATE clientes SET nombre = 'Lisa' WHERE id_cliente = 1;
-UPDATE clientes SET apellido = 'Black III' WHERE id_cliente = 4;
-UPDATE clientes SET nombre = 'Stewie' WHERE id_cliente = 5;
+UPDATE CLIENTES SET nombre = 'Lisa' WHERE id_cliente = 1;
+UPDATE CLIENTES SET apellido = 'Black III' WHERE id_cliente = 4;
+UPDATE CLIENTES SET nombre = 'Stewie' WHERE id_cliente = 5;
 
 -- 6) Elimino Registros
--- Paises
-DELETE FROM paises WHERE id_pais = 4;
+-- PAISES
+DELETE FROM PAISES WHERE id_pais = 4;
 
--- Provincias
-DELETE FROM provincias WHERE nombre = 'Departamento de Montevideo';
+-- PROVINCIAS
+DELETE FROM PROVINCIAS WHERE nombre = 'Departamento de Montevideo';
 
 -- Clientes
-DELETE FROM clientes WHERE id_cliente = 4;
+DELETE FROM CLIENTES WHERE id_cliente = 4;
 
 -- Domicilios
-DELETE FROM domicilios WHERE barrio = 'Islington';
+DELETE FROM DOMICILIOS WHERE barrio = 'Islington';
 
--- Ciudades
-DELETE FROM ciudades WHERE id_ciudad = 3;
+-- CIUDADES
+DELETE FROM CIUDADES WHERE id_ciudad = 3;
 
--- 7) Sentencia SELECT que lista a los clientes
-SELECT id_cliente, nombre, apellido FROM clientes;
+-- 7) Sentencia SELECT que lista a los CLIENTES
+SELECT id_cliente, nombre, apellido FROM CLIENTES;
 
 -- 8) Sentencia SELECT con condicion WHERE
-SELECT nombre FROM ciudades WHERE id_provincia=1;
+SELECT nombre FROM CIUDADES WHERE id_provincia=1;
 
 -- 9) Sentencia SELECT con FROM de 2 tablas
 -- SELECT: Elijo los campos a trabajar
-SELECT clientes.id_cliente, clientes.nombre, clientes.apellido, domicilios.calle, domicilios.altura, domicilios.barrio
+SELECT CLIENTES.id_cliente, CLIENTES.nombre, CLIENTES.apellido, DOMICILIOS.calle, DOMICILIOS.altura, DOMICILIOS.barrio
 -- FROM: Elijo una tabla
-FROM clientes
-INNER JOIN domicilios -- Elijo la otra tabla 
-ON clientes.id_domicilio=domicilios.id_domicilio; -- Determino el criterio con el que se van a mostrar los registros
--- Es decir: Mostrar solo los campos determinados en SELECT cuando el id_domicilio de la tabla clientes sea igual al
--- id_domicilio de la tabla domicilios
+FROM CLIENTES
+INNER JOIN DOMICILIOS -- Elijo la otra tabla 
+ON CLIENTES.id_domicilio=DOMICILIOS.id_domicilio; -- Determino el criterio con el que se van a mostrar los registros
+-- Es decir: Mostrar solo los campos determinados en SELECT cuando el id_domicilio de la tabla CLIENTES sea igual al
+-- id_domicilio de la tabla DOMICILIOS
 
 -- 10) Sentencia SELECT con solo descripciones
-SELECT nombre FROM paises 
+SELECT nombre FROM PAISES 
