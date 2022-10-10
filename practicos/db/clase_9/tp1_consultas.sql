@@ -161,4 +161,4 @@ ON CLIENTES.id_domicilio=DOMICILIOS.id_domicilio; -- Determino el criterio con e
 -- id_domicilio de la tabla DOMICILIOS
 
 -- 10) Sentencia SELECT con solo descripciones
-SELECT nombre FROM PAISES 
+SELECT calle "Nombre de Calle", altura "Número" FROM DOMICILIOS 
