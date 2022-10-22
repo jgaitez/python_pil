@@ -1,10 +1,13 @@
 # Rest Imports
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 # Models Imports
 from heroe.models import Hero
 
 # Serializer import
+from heroe.serializer import HeroSerializer
 
 # Create your views here.
 
@@ -12,16 +15,11 @@ class HeroApiView(APIView):
 
     def get(self, request):
         """Retorna un listado con todos los heroes almacenados en la base"""
-
-    def post(self, request):
-        """"""
-
-class ModificarHeroeApiView(APIView):
     
-    def put(self, request, id):
-        """"""
+        heroes = Hero.objects.all()
+        heroes_serializer = HeroSerializer(heroes, many = True)
 
-class DeleteHeroeApiView(APIView):
-
-    def delete(self, request, id):
-        """"""
+        return Response(
+            data=heroes_serializer.data,
+            status=status.HTTP_200_OK
+        )
