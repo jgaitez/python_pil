@@ -16,8 +16,7 @@ Pasos previos
 Anotaciones:
     - Modelo vista controlador
     Modelo: Tipo de base de datos (tablas)
-    Controlador: Funciones (Views). Establece la relacion entre back y front
-    Vista: Frontend. Recibe archivos JSON
+    Controlador: Funciones (Views). Establece la relacion entre back y front. Cuestiones de logica
 
 
 Creacion de Web con Django y Django Rest Framework
@@ -83,5 +82,15 @@ Creacion de Web con Django y Django Rest Framework
                 from app.models import Model
             Al final:
                 admin.site.register(Model)
+        
+        8) Crear View (vistas basadas en clases)
+
+            eliminar funcion render
+            importar funciones de REST Framework
+                from rest_framework.views import APIView
+            importar modelo creado
+                from model.models import Model
+            class ModelApiView(ApiView)
+
 
 """
