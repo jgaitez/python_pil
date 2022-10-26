@@ -88,9 +88,65 @@ Creacion de Web con Django y Django Rest Framework
             eliminar funcion render
             importar funciones de REST Framework
                 from rest_framework.views import APIView
+                from rest_framework.response import Response
+                from rest_framework import status
+
             importar modelo creado
                 from model.models import Model
             class ModelApiView(ApiView)
 
+            importar serializers
+                from app.serializer import ModelSerializer
+
+            Definir las funciones
+            def get/post/put(self, request)
+
+            Establecer contacto con la Tabla de la BD
+                Si yo quiero trabajar con todos los objetos del modelo:
+                    lista = Model.objects.all()
+            
+            Hacer data:
+                data = {
+                    "Model" : lista
+                }
+
+            Definir Response (y agregar mensaje y status)
+                return Response(
+                    data = data,
+                    status = status.X
+                )
+
+        ) Crear serializer
+            Importar funciones desde rest
+                from rest_framework import serializers
+            Importar modelos creados
+                from products.models import Product
+            
+            Nombrar Serializer segun convencion
+                class ModelSerializer(serializers.ModelSerializer): Este ultimo ModelSerializer 
+                es distinto del primero
+            
+            Definir subclase Meta, dentro de esta determinar el modelo y los datos con los que
+            se trabajan (si son todos: "__all__", si son una parte: escribirlos dentro de una
+            tupla)
+                class Meta:
+                    model = Model,
+                    fields = "__all__"
+
+
+        
+        9) Crear URLS
+            Dar de alta urls.py en carpeta de la app
+                Importar views al archivo
+                    from nombreapp.view import ModelAPIView
+                Agregar url
+                    path("path deseado/", ModelAPIView.as_view(), name = "nombre")
+
+            Dar de alta url en urls.py general
+                agregar el paquete include a lo importado desde django.urls
+                agregar url
+                    path('path deseado/', include("app.urls")),
+
+            
 
 """
