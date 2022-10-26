@@ -16,17 +16,10 @@ class ProductApiView(APIView):
     def get(self, request):
         """Retorna el listado de productos almacenados"""
 
-        
-
         products = Product.objects.all()
-        products_serializer = ProductSerializer(products)
-        print(products_serializer)
-
-        data = {
-            "Products" : "hola"
-        }
+        products_serializer = ProductSerializer(products, many = True)
 
         return Response(
-            data = data, 
+            data = products_serializer.data, 
             status = status.HTTP_200_OK
             )
