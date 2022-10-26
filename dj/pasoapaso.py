@@ -103,16 +103,15 @@ Creacion de Web con Django y Django Rest Framework
 
             Establecer contacto con la Tabla de la BD
                 Si yo quiero trabajar con todos los objetos del modelo:
-                    lista = Model.objects.all()
-            
-            Hacer data:
-                data = {
-                    "Model" : lista
-                }
+                    model = Model.objects.all()
 
-            Definir Response (y agregar mensaje y status)
+            Igualar lista a lista serializada
+                model_serializer = ModelSerializer(Model, many = True)
+                El "many" es necesario para especificar que se va a trabajar con muchos valores
+            
+            Definir Response (y agregar data y status)
                 return Response(
-                    data = data,
+                    data = model_serializer.data
                     status = status.X
                 )
 
