@@ -100,6 +100,8 @@ Creacion de Web con Django y Django Rest Framework
 
             Definir las funciones
             def get/post/put(self, request)
+            Las Funciones pueden estar integradas en la misma clase o no.
+            En el segundo caso 
 
             Establecer contacto con la Tabla de la BD
                 Si yo quiero trabajar con todos los objetos del modelo:
@@ -114,6 +116,36 @@ Creacion de Web con Django y Django Rest Framework
                     data = model_serializer.data
                     status = status.X
                 )
+
+            Traducir de json a BD
+                    serializer = ModelSerializer(data=request.data)
+
+            Agregar validacion de datos (por ejemplo al usar el metodo post, para evitar cargar 
+            duplicados o valores mas extensos de lo permitido)
+                if serializer.is_valid():
+                    serializer.save()
+
+            
+            OTRAS FUNCIONES
+
+            Obtener info de un objeto en particular
+                class ModelDetalleApiView(APIView):
+
+                    def get(self, request, pk):
+                        #Nos retorna mas info de un un heroe en particular
+                        
+                        model = model.objects.filter()
+                        es un filtro en general de acuerdo al criterio que se establece (que puede arrojar
+                        varios resultados)
+                        model = model.objects.get()
+                        devuelve el primer valor
+                        heroe_serializer = HeroSerializer(heroe, data=request.data)
+                        traduzco el valor y se lo entrego al serializer junto a la nueva data
+
+                        return Response(
+                            data=heroes_serializer.data,
+                            status=status.HTTP_200_OK
+                        )
 
         ) Crear serializer
             Importar funciones desde rest
@@ -140,6 +172,7 @@ Creacion de Web con Django y Django Rest Framework
                     from nombreapp.view import ModelAPIView
                 Agregar url
                     path("path deseado/", ModelAPIView.as_view(), name = "nombre")
+                    path("path deseado/<argumentos>/", ModelAPIView.as_view(), name = "nombre")
 
             Dar de alta url en urls.py general
                 agregar el paquete include a lo importado desde django.urls
