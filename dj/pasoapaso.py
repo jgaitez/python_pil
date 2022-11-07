@@ -146,6 +146,33 @@ Creacion de Web con Django y Django Rest Framework
                             data=heroes_serializer.data,
                             status=status.HTTP_200_OK
                         )
+            
+            Gestion de ERRORES
+            Para que al momento de que aparezca un error, se brinde informacion apropiada para alguien no tecnico
+            y para evitar tener que hacerlo en todas las funciones, se usan helpers
+
+            Se crea dentro de la carpeta del modelo la carpeta "helpers"
+            se crea el __init__
+            Se crea dentro un archivo para gestionar los errores:
+                Se importa el modelo sobre el cual trabajar
+                Se empiezan a hacer las funciones
+                    def hayError(pk):
+                        try:
+                            model = Hero.objects.get(id=pk)
+
+                            return True, heroe
+                        except:
+                            return False
+            Se importa en el archivo views.py las funciones creadas
+
+        Otra alternativa para las metodos es a traves de los decoradores (funciones)
+            se importan los decoradores a las views
+                from rest_framework.decorators import api_view
+            Y en el view se escribe
+                @api_view(["GET"])
+                Se llama a api_view y en la lista se escriben los metodos a usar
+            Y se agrega la api view al import de las urls
+
 
         ) Crear serializer
             Importar funciones desde rest
@@ -178,6 +205,21 @@ Creacion de Web con Django y Django Rest Framework
                 agregar el paquete include a lo importado desde django.urls
                 agregar url
                     path('path deseado/', include("app.urls")),
+
+
+
+Extras: Personalizar "/admin"
+
+Entramos al archivo models y dentro de la clase que define al modelo escribimos
+
+    def __str__(self):
+        return self.atributo que querramos mostrar en vez del default (Model Object X)
+    
+    class Meta:
+    verbose_name = "Heroe"
+    verbose_name_plural = "Heroes"
+
+    Esto permite cambiar loa nombres
 
             
 
