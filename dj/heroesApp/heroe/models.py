@@ -1,5 +1,3 @@
-from random import choices
-from secrets import choice
 from django.db import models
 
 # Create your models here.
@@ -17,6 +15,7 @@ class Hero(models.Model):
         unique = True,
         verbose_name = "Nombre"
     )
+
     age = models.IntegerField(
 
     )
@@ -26,3 +25,10 @@ class Hero(models.Model):
         choices = UNIVERSE_CHOICE,
         verbose_name = "Universo"
     )
+
+    class Meta:
+        verbose_name = "Heroe"
+        verbose_name_plural = "Heroes"
+
+    def __str__(self):
+        return self.name

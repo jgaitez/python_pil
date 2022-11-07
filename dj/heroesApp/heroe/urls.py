@@ -2,7 +2,12 @@
 from django.urls import path
 
 # Views import
-from heroe.views import HeroApiView, CrearHeroApiView, HeroDetalleApiView
+from heroe.views import (
+    HeroApiView,
+    CrearHeroApiView,
+    HeroDetalleApiView,
+    hero_api_view
+    )
 
 # Urls
 urlpatterns = [
