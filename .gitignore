@@ -8,3 +8,26 @@
 /dj/heroesApp/heroe/__pycache__
 /practicos/dj/clase_16/classicmodels/classicmodels/__pycache__
 /practicos/dj/clase_16/classicmodels/products/__pycache__
+
+# React
+# dependencies
+/frontend/react/primer_app/node_modules
+/frontend/react/primer_app/.pnp
+.pnp.js
+
+# testing
+/frontend/react/primer_app/coverage/
+
+# production
+/frontend/react/primer_app/build/
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
